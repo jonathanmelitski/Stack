@@ -1,0 +1,84 @@
+//
+//  WorkoutDeadlineCluster.swift
+//  Stack
+//
+//  Created by Jonathan Melitski on 5/12/26.
+//
+
+import SwiftUI
+
+struct WorkoutDeadlineCluster: View {
+    let workout: StackWorkout
+    let completedByUser: Bool
+    
+    var deadlineText: String {
+        let dateFormatter = DateFormatter()
+        if Calendar.current.isDateInToday(workout.deadline) {
+            dateFormatter.dateStyle = .none
+            dateFormatter.timeStyle = .short
+            return "Today \(dateFormatter.string(from: workout.deadline))"
+        } else if Calendar.current.isDateInTomorrow(workout.deadline) {
+            dateFormatter.dateStyle = .none
+            dateFormatter.timeStyle = .short
+            return "Tomorrow \(dateFormatter.string(from: workout.deadline))"
+        } else if Calendar.current.isDateInYesterday(workout.deadline) {
+            dateFormatter.dateStyle = .none
+            dateFormatter.timeStyle = .short
+            return "Yesterday \(dateFormatter.string(from: workout.deadline))"
+        } else if abs(Date.now.timeIntervalSince(workout.deadline)) < 60 * 60 * 24 * 6 {
+            dateFormatter.dateFormat = "EEE h:mm a"
+            return dateFormatter.string(from: workout.deadline)
+        } else {
+            dateFormatter.dateStyle = .short
+            dateFormatter.timeStyle = .short
+            return dateFormatter.string(from: workout.deadline)
+        }
+    }
+    
+    var body: some View {
+        TimelineView(.everyMinute) { ctx in
+            let totalSeconds = workout.deadline.timeIntervalSince(workout.host.proposedAt)
+            let elapsedSeconds = Date.now.timeIntervalSince(workout.host.proposedAt)
+            HStack(spacing: 16) {
+                if completedByUser {
+                    ZStack {
+                        Circle()
+                            .stroke(Color.green, lineWidth: 4)
+                        Image(systemName: "checkmark")
+                            .foregroundStyle(.white)
+                    }
+                    
+                } else if elapsedSeconds / totalSeconds < 1 {
+                    ProgressView(value: elapsedSeconds, total: totalSeconds)
+                        .progressViewStyle(RadialProgressViewStyle(completedByUser: completedByUser))
+                } else {
+                    ZStack {
+                        Circle()
+                            .stroke(Color.accent, lineWidth: 4)
+                        Image(systemName: "xmark")
+                            .foregroundStyle(.white)
+                    }
+                }
+                VStack(alignment: .leading, spacing: 4) {
+                    let isActive: Bool = elapsedSeconds / totalSeconds < 1
+                    let bodyText: String = {
+                        if completedByUser && isActive {
+                            return "CLOSES"
+                        } else if isActive {
+                            return "DUE"
+                        } else {
+                            return "CLOSED"
+                        }
+                    }()
+                    Text(bodyText)
+                    .font(.custom("JetBrains Mono", size: 12, relativeTo: .caption))
+                    .foregroundStyle(isActive ? .gray : .accent)
+                    .fontWeight(.semibold)
+                    Text(deadlineText)
+                        .foregroundStyle(.white)
+                        .fontWeight(.bold)
+                }
+            }
+        }
+    }
+}

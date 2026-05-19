@@ -7,29 +7,39 @@
 
 import SwiftUI
 import Messages
+import StackShared
 
 struct WorkoutsView: View {
-    @ObservedObject var vm = WorkoutStackViewModel.shared
+    @StateObject var vm: WorkoutStackViewModel
+    
+    init(vm: WorkoutStackViewModel) {
+        self._vm = StateObject(wrappedValue: vm)
+    }
     
     var body: some View {
-        switch vm.page {
-        case .home:
-            HomeView()
-        case .create:
-            CreateWorkoutView()
-        case .detail(let message):
-            Text("Deatil viea")
-        case .profile:
-            ProfileView()
+        Group {
+            if vm.style == .transcript {
+                WorkoutLiveTemplate(workout: StackWorkout.sample)
+                    .onTapGesture {
+                        vm.requestStyle(.expanded)
+                    }
+            } else if let message = vm.currentMessage {
+                Text("OpenedWorkoutView")
+            } else {
+                switch vm.page {
+                case .home:
+                    HomeView()
+                case .create:
+                    CreateWorkoutView()
+                case .detail(let message):
+                    Text("Deatil viea")
+                case .profile:
+                    ProfileView()
+                }
+            }
         }
+        .environmentObject(vm)
     }
-}
-
-enum Page {
-    case home
-    case create
-    case detail(message: MSMessage)
-    case profile
 }
 
 

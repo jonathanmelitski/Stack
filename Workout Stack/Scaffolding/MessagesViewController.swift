@@ -8,6 +8,7 @@
 import UIKit
 import SwiftUI
 import Messages
+import StackShared
 
 @objc(MessagesViewController)
 class MessagesViewController: MSMessagesAppViewController {
@@ -20,10 +21,18 @@ class MessagesViewController: MSMessagesAppViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    weak var delegate: WorkoutStackMessagesDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .black
-        let hostingController = UIHostingController(rootView: WorkoutsView())
+        let viewModel = WorkoutStackViewModel(style: self.presentationStyle)
+        viewModel.setMessagesController(self)
+        self.delegate = viewModel
+        let hostingController = UIHostingController(rootView: {
+            WorkoutsView(vm: viewModel)
+                .foregroundStyle(.white)
+        }())
         addChild(hostingController)
         hostingController.view.translatesAutoresizingMaskIntoConstraints = false
         hostingController.view.backgroundColor = .black
@@ -36,8 +45,10 @@ class MessagesViewController: MSMessagesAppViewController {
             hostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             hostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
-        
-        WorkoutStackViewModel.shared.setMessagesController(self)
+    }
+    
+    override func contentSizeThatFits(_ size: CGSize) -> CGSize {
+        return CGSize(width: 300, height: 250)
     }
     
     
@@ -45,30 +56,30 @@ class MessagesViewController: MSMessagesAppViewController {
     // MARK: - Conversation Handling
     
     override func willBecomeActive(with conversation: MSConversation) {
-        WorkoutStackViewModel.shared.willBecomeActive(with: conversation)
+        delegate?.willBecomeActive(with: conversation)
     }
     
     override func didResignActive(with conversation: MSConversation) {
-        WorkoutStackViewModel.shared.didResignActive(with: conversation)
+        delegate?.didResignActive(with: conversation)
     }
    
     override func didReceive(_ message: MSMessage, conversation: MSConversation) {
-        WorkoutStackViewModel.shared.didReceive(message, conversation: conversation)
+        delegate?.didReceive(message, conversation: conversation)
     }
     
     override func didStartSending(_ message: MSMessage, conversation: MSConversation) {
-        WorkoutStackViewModel.shared.didStartSending(message, conversation: conversation)
+        delegate?.didStartSending(message, conversation: conversation)
     }
     
     override func didCancelSending(_ message: MSMessage, conversation: MSConversation) {
-        WorkoutStackViewModel.shared.didCancelSending(message, conversation: conversation)
+        delegate?.didCancelSending(message, conversation: conversation)
     }
     
     override func willTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
-        WorkoutStackViewModel.shared.willTransition(to: presentationStyle)
+        delegate?.willTransition(to: presentationStyle)
     }
     
     override func didTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
-        WorkoutStackViewModel.shared.didTransition(to: presentationStyle)
+        delegate?.didTransition(to: presentationStyle)
     }
 }

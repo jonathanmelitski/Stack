@@ -8,16 +8,22 @@
 import Foundation
 import SwiftUI
 
-struct Profile: Codable {
-    static let colorOptions: [Color] = ProfilePalette.athleticNeon + ProfilePalette.sportTeam
-    static let maxNameLength: Int = 20
+public struct Profile: Codable {
+    public static let colorOptions: [Color] = ProfilePalette.athleticNeon + ProfilePalette.sportTeam
+    public static let maxNameLength: Int = 20
     
-    var color: Color
-    var displayName: String
-    var overlayCharacter: String? {
+    public var color: Color
+    public var displayName: String
+    public var overlayCharacter: String? {
         self.displayName.first?.uppercased()
     }
-    let uuid: UUID? // not sure if this will work. Is my remote UUID the same to other people as my localUUID?
+    public let uuid: UUID? // not sure if this will work. Is my remote UUID the same to other people as my localUUID?
+    
+    public init(color: Color, displayName: String, uuid: UUID?) {
+        self.color = color
+        self.displayName = displayName
+        self.uuid = uuid
+    }
     
 }
 
@@ -71,9 +77,6 @@ enum ProfilePalette {
         Color(.sRGB, red: 1.000, green: 0.420, blue: 0.102, opacity: 1), // Court    #FF6B1A
         Color(.sRGB, red: 1.000, green: 0.722, blue: 0.110, opacity: 1), // Hardwood #FFB81C
         Color(.sRGB, red: 0.106, green: 0.431, blue: 0.227, opacity: 1), // Field    #1B6E3A
-        Color(.sRGB, red: 0.000, green: 0.239, blue: 0.647, opacity: 1), // Cobalt   #003DA5
-        Color(.sRGB, red: 0.043, green: 0.075, blue: 0.169, opacity: 1), // Midnight #0B132B
         Color(.sRGB, red: 0.361, green: 0.176, blue: 0.569, opacity: 1), // Nitro    #5C2D91
-        Color(.sRGB, red: 0.000, green: 0.000, blue: 0.000, opacity: 1), // Carbon   #000000
     ]
 }

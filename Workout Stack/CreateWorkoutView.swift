@@ -7,9 +7,10 @@
 
 import SwiftUI
 import Messages
+import StackShared
 
 struct CreateWorkoutView: View {
-    @ObservedObject var vm = WorkoutStackViewModel.shared
+    @EnvironmentObject var vm: WorkoutStackViewModel
     
     var body: some View {
         VStack {
@@ -29,7 +30,7 @@ struct CreateWorkoutView: View {
                     .foregroundStyle(.accent)
                     Spacer()
                     Button {
-                        WorkoutStackViewModel.shared.dismiss()
+                        vm.dismiss()
                     } label: {
                         Image(systemName: "xmark")
                     }
@@ -43,6 +44,12 @@ struct CreateWorkoutView: View {
                         .bold()
                     Spacer()
                 }
+                Button("stage trial workout") {
+                    Task {
+                        try? await self.vm.sendNewWorkoutMessage(workout: StackWorkout.sample)
+                    }
+                }
+                
             }
             Spacer()
         }

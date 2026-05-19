@@ -7,7 +7,7 @@
 
 import Messages
 
-protocol WorkoutStackMessagesDelegate {
+public protocol WorkoutStackMessagesDelegate: AnyObject {
     func willBecomeActive(with conversation: MSConversation)
 
     func didResignActive(with conversation: MSConversation)

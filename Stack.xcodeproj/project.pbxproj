@@ -7,11 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		738B19A72FAC09F10057641D /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738B19A62FAC09F10057641D /* Messages.framework */; };
+		734083BB2FB02C16008C547B /* StackShared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 734083B32FB02C16008C547B /* StackShared.framework */; };
+		734083BC2FB02C16008C547B /* StackShared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 734083B32FB02C16008C547B /* StackShared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		734083C62FB02EFA008C547B /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738B19A62FAC09F10057641D /* Messages.framework */; };
+		734083C92FB02F03008C547B /* StackShared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 734083B32FB02C16008C547B /* StackShared.framework */; };
+		734083CA2FB02F03008C547B /* StackShared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 734083B32FB02C16008C547B /* StackShared.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		738B19B32FAC09F50057641D /* Workout Stack.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 738B19A42FAC09F10057641D /* Workout Stack.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		734083B92FB02C16008C547B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 738B198A2FAC094C0057641D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 734083B22FB02C16008C547B;
+			remoteInfo = StackShared;
+		};
+		734083CB2FB02F03008C547B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 738B198A2FAC094C0057641D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 734083B22FB02C16008C547B;
+			remoteInfo = StackShared;
+		};
 		738B19B12FAC09F50057641D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 738B198A2FAC094C0057641D /* Project object */;
@@ -22,6 +40,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		734083BD2FB02C16008C547B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				734083BC2FB02C16008C547B /* StackShared.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		734083CD2FB02F03008C547B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				734083CA2FB02F03008C547B /* StackShared.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		738B19B82FAC09F50057641D /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -36,12 +76,40 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		734083B32FB02C16008C547B /* StackShared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StackShared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		738B19922FAC094C0057641D /* Stack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		738B19A42FAC09F10057641D /* Workout Stack.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Workout Stack.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		738B19A62FAC09F10057641D /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		734083D62FB030C0008C547B /* Exceptions for "StackShared" folder in "Stack" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Anton-Regular.ttf",
+				"JetBrainsMono-Regular.ttf",
+				"JetBrainsMono-SemiBold.ttf",
+				SharedAssets.xcassets,
+			);
+			target = 738B19912FAC094C0057641D /* Stack */;
+		};
+		734083D72FB030C0008C547B /* Exceptions for "StackShared" folder in "Workout Stack" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Anton-Regular.ttf",
+				"JetBrainsMono-Regular.ttf",
+				"JetBrainsMono-SemiBold.ttf",
+				SharedAssets.xcassets,
+			);
+			target = 738B19A32FAC09F10057641D /* Workout Stack */;
+		};
+		734083E02FB0313B008C547B /* Exceptions for "Stack" folder in "Stack" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 738B19912FAC094C0057641D /* Stack */;
+		};
 		738B19B42FAC09F50057641D /* Exceptions for "Workout Stack" folder in "Workout Stack" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -52,8 +120,20 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		734083B42FB02C16008C547B /* StackShared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				734083D62FB030C0008C547B /* Exceptions for "StackShared" folder in "Stack" target */,
+				734083D72FB030C0008C547B /* Exceptions for "StackShared" folder in "Workout Stack" target */,
+			);
+			path = StackShared;
+			sourceTree = "<group>";
+		};
 		738B19942FAC094C0057641D /* Stack */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				734083E02FB0313B008C547B /* Exceptions for "Stack" folder in "Stack" target */,
+			);
 			path = Stack;
 			sourceTree = "<group>";
 		};
@@ -68,10 +148,18 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		734083B02FB02C16008C547B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		738B198F2FAC094C0057641D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				734083BB2FB02C16008C547B /* StackShared.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +167,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				738B19A72FAC09F10057641D /* Messages.framework in Frameworks */,
+				734083C92FB02F03008C547B /* StackShared.framework in Frameworks */,
+				734083C62FB02EFA008C547B /* Messages.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +180,7 @@
 			children = (
 				738B19942FAC094C0057641D /* Stack */,
 				738B19A82FAC09F20057641D /* Workout Stack */,
+				734083B42FB02C16008C547B /* StackShared */,
 				738B19A52FAC09F10057641D /* Frameworks */,
 				738B19932FAC094C0057641D /* Products */,
 			);
@@ -101,6 +191,7 @@
 			children = (
 				738B19922FAC094C0057641D /* Stack.app */,
 				738B19A42FAC09F10057641D /* Workout Stack.appex */,
+				734083B32FB02C16008C547B /* StackShared.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,7 +206,40 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		734083AE2FB02C16008C547B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		734083B22FB02C16008C547B /* StackShared */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 734083C02FB02C16008C547B /* Build configuration list for PBXNativeTarget "StackShared" */;
+			buildPhases = (
+				734083AE2FB02C16008C547B /* Headers */,
+				734083AF2FB02C16008C547B /* Sources */,
+				734083B02FB02C16008C547B /* Frameworks */,
+				734083B12FB02C16008C547B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				734083B42FB02C16008C547B /* StackShared */,
+			);
+			name = StackShared;
+			packageProductDependencies = (
+			);
+			productName = StackShared;
+			productReference = 734083B32FB02C16008C547B /* StackShared.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		738B19912FAC094C0057641D /* Stack */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 738B199D2FAC094F0057641D /* Build configuration list for PBXNativeTarget "Stack" */;
@@ -124,11 +248,13 @@
 				738B198F2FAC094C0057641D /* Frameworks */,
 				738B19902FAC094C0057641D /* Resources */,
 				738B19B82FAC09F50057641D /* Embed Foundation Extensions */,
+				734083BD2FB02C16008C547B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				738B19B22FAC09F50057641D /* PBXTargetDependency */,
+				734083BA2FB02C16008C547B /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				738B19942FAC094C0057641D /* Stack */,
@@ -147,10 +273,12 @@
 				738B19A02FAC09F10057641D /* Sources */,
 				738B19A12FAC09F10057641D /* Frameworks */,
 				738B19A22FAC09F10057641D /* Resources */,
+				734083CD2FB02F03008C547B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				734083CC2FB02F03008C547B /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				738B19A82FAC09F20057641D /* Workout Stack */,
@@ -172,6 +300,9 @@
 				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 2600;
 				TargetAttributes = {
+					734083B22FB02C16008C547B = {
+						CreatedOnToolsVersion = 26.0;
+					};
 					738B19912FAC094C0057641D = {
 						CreatedOnToolsVersion = 26.0;
 					};
@@ -196,11 +327,19 @@
 			targets = (
 				738B19912FAC094C0057641D /* Stack */,
 				738B19A32FAC09F10057641D /* Workout Stack */,
+				734083B22FB02C16008C547B /* StackShared */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		734083B12FB02C16008C547B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		738B19902FAC094C0057641D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -218,6 +357,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		734083AF2FB02C16008C547B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		738B198E2FAC094C0057641D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -235,6 +381,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		734083BA2FB02C16008C547B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 734083B22FB02C16008C547B /* StackShared */;
+			targetProxy = 734083B92FB02C16008C547B /* PBXContainerItemProxy */;
+		};
+		734083CC2FB02F03008C547B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 734083B22FB02C16008C547B /* StackShared */;
+			targetProxy = 734083CB2FB02F03008C547B /* PBXContainerItemProxy */;
+		};
 		738B19B22FAC09F50057641D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 738B19A32FAC09F10057641D /* Workout Stack */;
@@ -243,6 +399,100 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		734083BE2FB02C16008C547B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 66J28WFSS6;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jmelitski.StackShared;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_MODULE = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				XROS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Debug;
+		};
+		734083BF2FB02C16008C547B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 66J28WFSS6;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jmelitski.StackShared;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_MODULE = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				XROS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Release;
+		};
 		738B199B2FAC094F0057641D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -374,6 +624,7 @@
 				DEVELOPMENT_TEAM = 66J28WFSS6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Stack/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -406,6 +657,7 @@
 				DEVELOPMENT_TEAM = 66J28WFSS6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Stack/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -489,6 +741,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		734083C02FB02C16008C547B /* Build configuration list for PBXNativeTarget "StackShared" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				734083BE2FB02C16008C547B /* Debug */,
+				734083BF2FB02C16008C547B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		738B198D2FAC094C0057641D /* Build configuration list for PBXProject "Stack" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

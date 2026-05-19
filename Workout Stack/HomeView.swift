@@ -7,9 +7,10 @@
 
 import SwiftUI
 import Messages
+import StackShared
 
 struct HomeView: View {
-    @ObservedObject var vm = WorkoutStackViewModel.shared
+    @EnvironmentObject var vm: WorkoutStackViewModel
     var body: some View {
         VStack {
             HStack {
@@ -51,6 +52,7 @@ struct HomeView: View {
             }
             Button {
                 self.vm.requestStyle(.expanded)
+                
                 withAnimation(.snappy(duration: 0.2)) {
                     self.vm.page = .create
                 }

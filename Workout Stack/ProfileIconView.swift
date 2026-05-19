@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import StackShared
 
 struct ProfileIconView: View {
     let profile: Profile

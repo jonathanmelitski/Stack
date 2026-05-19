@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import StackShared
 
 struct ProfileView: View {
-    @ObservedObject var vm = WorkoutStackViewModel.shared
+    @EnvironmentObject var vm: WorkoutStackViewModel
     @State var profile: Profile = .init(color: Profile.colorOptions.first!, displayName: "J", uuid: nil)
-    @State var editingName: Bool = false
+    @State var editing: Bool = false
     @FocusState var textFieldFocused: Bool
     
     var body: some View {
@@ -41,11 +42,26 @@ struct ProfileView: View {
                 }
             }
             VStack {
-                ProfileIconView(profile: profile)
-                    .frame(width: 50, height: 50)
+                if !editing {
+                    ProfileIconView(profile: profile)
+                        .frame(width: 50, height: 50)
+                } else {
+                    Button {
+                        withAnimation (.snappy(duration: 0.2)) {
+                            profile.color = Profile.colorOptions.randomElement()!
+                        }
+                    } label: {
+                        Circle()
+                            .fill(profile.color)
+                            .overlay {
+                                Image(systemName: "die.face.5")
+                            }
+                            .frame(width: 50, height: 50)
+                    }
+                }
                 VStack (spacing: 2) {
                     Group {
-                        if !editingName {
+                        if !editing {
                             Text(profile.displayName.uppercased())
                                 
                         } else {
@@ -66,7 +82,7 @@ struct ProfileView: View {
                     
                     Button {
                         withAnimation(.snappy(duration: 0.2)) {
-                            self.editingName = true
+                            self.editing = true
                             self.textFieldFocused = true
                         }
                     } label: {
@@ -78,7 +94,7 @@ struct ProfileView: View {
                 .onChange(of: textFieldFocused) {
                     if !textFieldFocused {
                         withAnimation(.snappy(duration: 0.2)) {
-                            self.editingName = false
+                            self.editing = false
                         }
                     }
                 }
@@ -89,5 +105,6 @@ struct ProfileView: View {
         }
         .padding([.horizontal, .bottom])
         .foregroundStyle(.white)
+        .coordinateSpace(.named("profile-card"))
     }
 }

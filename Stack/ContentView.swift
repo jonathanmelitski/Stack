@@ -6,19 +6,18 @@
 //
 
 import SwiftUI
+import StackShared
+import WorkoutKit
+internal import HealthKit
+
+
 
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Hello WOrld!")
         }
         .padding()
     }
 }
 
-#Preview {
-    ContentView()
-}
