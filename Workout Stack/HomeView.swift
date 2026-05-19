@@ -9,9 +9,24 @@ import SwiftUI
 import Messages
 import StackShared
 
-struct HomeView: View {
+struct HomeView: MessagesPresentationMultiplexableView {
+    let style: MSMessagesAppPresentationStyle
+    
     @EnvironmentObject var vm: WorkoutStackViewModel
-    var body: some View {
+    
+    var compact: some View {
+        defaultBody()
+    }
+    
+    var expanded: some View {
+        defaultBody()
+    }
+    
+    var transcript: some View {
+        defaultBody()
+    }
+    
+    @ViewBuilder func defaultBody() -> some View {
         VStack {
             HStack {
                 VStack(spacing: 2) {
@@ -89,5 +104,6 @@ struct HomeView: View {
         }
         .padding([.horizontal, .bottom])
         .foregroundStyle(.white)
+        .environmentObject(vm)
     }
 }

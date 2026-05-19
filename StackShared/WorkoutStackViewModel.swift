@@ -26,6 +26,18 @@ public class WorkoutStackViewModel: ObservableObject, WorkoutStackMessagesDelega
     }
     @Published public var page: Page = .home
     
+    public var messageEncodedStackWorkout: StackWorkout? {
+        guard let currentMessage,
+              let url = currentMessage.url,
+              let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+              let dataStr = components.queryItems?.first(where: { $0.name == "data" })?.value,
+              let data = Data(base64Encoded: dataStr),
+              let workout = try? JSONDecoder().decode(StackWorkout.self, from: data)
+        else { return nil }
+        
+        return workout
+    }
+    
     public var requestedStyleChange: Bool = false
     
     public private(set) var userPreferredStyle: MSMessagesAppPresentationStyle = .compact

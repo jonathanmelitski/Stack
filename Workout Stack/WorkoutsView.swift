@@ -18,27 +18,53 @@ struct WorkoutsView: View {
     
     var body: some View {
         Group {
-            if vm.style == .transcript {
-                WorkoutLiveTemplate(workout: StackWorkout.sample)
-                    .onTapGesture {
-                        vm.requestStyle(.expanded)
-                    }
-            } else if let message = vm.currentMessage {
-                Text("OpenedWorkoutView")
+            if let workout = vm.messageEncodedStackWorkout {
+                WorkoutDetailViewMuxer(style: vm.style, workout: workout)
             } else {
                 switch vm.page {
                 case .home:
-                    HomeView()
+                    HomeView(style: vm.style)
                 case .create:
                     CreateWorkoutView()
                 case .detail(let message):
-                    Text("Deatil viea")
+                    Text("detail view")
                 case .profile:
                     ProfileView()
+                @unknown default:
+                    fatalError()
                 }
             }
         }
         .environmentObject(vm)
+        
+        
+        
+//        Group {
+//            if let workout = vm.messageEncodedStackWorkout,
+//               vm.style == .transcript {
+//                WorkoutLiveTemplate(workout: workout)
+//                    .onTapGesture {
+//                        vm.requestStyle(.expanded)
+//                    }
+//            } else if vm.style == .transcript {
+//                Text("Unknown workout")
+//            } else if let workout = vm.messageEncodedStackWorkout {
+//                WorkoutDetailView(workout: workout)
+//                    .padding()
+//            } else {
+//                switch vm.page {
+//                case .home:
+//                    HomeView()
+//                case .create:
+//                    CreateWorkoutView()
+//                case .detail(let message):
+//                    Text("Deatil viea")
+//                case .profile:
+//                    ProfileView()
+//                }
+//            }
+//        }
+        
     }
 }
 

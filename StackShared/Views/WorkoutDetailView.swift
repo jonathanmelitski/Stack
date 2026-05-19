@@ -10,7 +10,7 @@ import WorkoutKit
 import HealthKit
 import Messages
 
-struct WorkoutDetailView: View {
+public struct WorkoutDetailView: View {
     @EnvironmentObject var vm: WorkoutStackViewModel
     @Namespace var namespace
     
@@ -18,7 +18,12 @@ struct WorkoutDetailView: View {
     @State var page: Int = 0
     
     let workout: StackWorkout
-    var body: some View {
+    
+    public init(workout: StackWorkout) {
+        self.workout = workout
+    }
+    
+    public var body: some View {
         VStack {
             ZStack {
                 HStack {
