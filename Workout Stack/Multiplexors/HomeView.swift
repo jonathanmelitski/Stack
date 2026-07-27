@@ -5,28 +5,15 @@
 //  Created by Jonathan Melitski on 5/7/26.
 //
 
-import SwiftUI
-import Messages
+import MessagesAppKit
 import StackShared
+import SwiftUI
 
 struct HomeView: MessagesPresentationMultiplexableView {
-    let style: MSMessagesAppPresentationStyle
-    
-    @EnvironmentObject var vm: WorkoutStackViewModel
-    
+    @EnvironmentObject private var session: MessagesSession
+    @EnvironmentObject private var router: StackRouter
+
     var compact: some View {
-        defaultBody()
-    }
-    
-    var expanded: some View {
-        defaultBody()
-    }
-    
-    var transcript: some View {
-        defaultBody()
-    }
-    
-    @ViewBuilder func defaultBody() -> some View {
         VStack {
             HStack {
                 VStack(spacing: 2) {
@@ -39,37 +26,37 @@ struct HomeView: MessagesPresentationMultiplexableView {
                     RoundedRectangle(cornerRadius: 4)
                         .fill(.accent.mix(with: .black, by: 0.5))
                         .frame(height: 4)
-                    
+
                 }
                 .frame(width: 20, height: 16)
                 .padding(4)
                 Text("STACK")
                     .font(.custom("Anton-Regular", fixedSize: 20))
                     .bold()
-                    
+
                 Spacer()
                 Button {
                     withAnimation(.snappy(duration: 0.2)) {
-                        self.vm.page = .profile
+                        router.page = .profile
                     }
                 } label: {
                     HStack(spacing: 4) {
                         Text("Profile")
                         Image(systemName: "chevron.right")
                             .font(.system(size: 8))
-                        
+
                     }
                     .font(.custom("SF Pro", size: 16, relativeTo: .caption))
                     .padding(.horizontal)
                 }
                 .buttonStyle(.plain)
-                
+
             }
             Button {
-                self.vm.requestStyle(.expanded)
-                
+                session.requestPresentationStyle(.expanded)
+
                 withAnimation(.snappy(duration: 0.2)) {
-                    self.vm.page = .create
+                    router.page = .create
                 }
             } label: {
                 HStack {
@@ -81,12 +68,12 @@ struct HomeView: MessagesPresentationMultiplexableView {
                                 .fill(.ultraThinMaterial)
                         }
                     VStack(alignment: .leading, spacing: 0) {
-                        Text((vm.isSinglePersonGroup ?? false) ? "NEW WORKOUT" : "NEW GROUP WORKOUT")
+                        Text((session.isOneOnOne ?? false) ? "NEW WORKOUT" : "NEW GROUP WORKOUT")
                             .font(.custom("Anton-Regular", size: 24, relativeTo: .title))
                             .bold()
                         Text("Send a challenge to the chat")
                             .font(.custom("SF Pro", size: 16, relativeTo: .body))
-                        
+
                     }
                     .multilineTextAlignment(.leading)
                     .lineSpacing(0)
@@ -104,6 +91,5 @@ struct HomeView: MessagesPresentationMultiplexableView {
         }
         .padding([.horizontal, .bottom])
         .foregroundStyle(.white)
-        .environmentObject(vm)
     }
 }

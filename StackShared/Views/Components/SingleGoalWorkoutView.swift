@@ -35,7 +35,8 @@ struct SingleGoalWorkoutView: View {
                 Spacer()
             }
             .padding()
-            .stackExpandingBoxBackgrounded()
+            .inExpandingRectangle()
+            .stackBoxBackgrounded()
             
             Text("THE WORK")
                 .font(.custom("JetBrainsMono-SemiBold", size: 12, relativeTo: .body))
@@ -43,7 +44,8 @@ struct SingleGoalWorkoutView: View {
             
             SingleGoalWorkoutGoalMuxerView(goal: workout.goal)
                 .padding()
-                .stackExpandingBoxBackgrounded()
+                .inExpandingRectangle()
+                .stackBoxBackgrounded()
         }
     }
 }

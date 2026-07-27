@@ -8,19 +8,19 @@
 import SwiftUI
 import WorkoutKit
 import HealthKit
-import Messages
 
 public struct WorkoutDetailView: View {
-    @EnvironmentObject var vm: WorkoutStackViewModel
     @Namespace var namespace
-    
+
     // 0 = Workout; 1 = Activity
     @State var page: Int = 0
-    
+
     let workout: StackWorkout
-    
-    public init(workout: StackWorkout) {
+    let onDismiss: () -> Void
+
+    public init(workout: StackWorkout, onDismiss: @escaping () -> Void) {
         self.workout = workout
+        self.onDismiss = onDismiss
     }
     
     public var body: some View {
@@ -29,7 +29,7 @@ public struct WorkoutDetailView: View {
                 HStack {
                     Spacer()
                     Button {
-                        vm.dismiss()
+                        onDismiss()
                     } label: {
                         Image(systemName: "xmark")
                     }
@@ -154,7 +154,7 @@ public struct WorkoutDetailView: View {
     }
 }
 
-extension View {
+public extension View {
     func inExpandingRectangle() -> some View {
         ZStack {
             Rectangle().fill(Color.clear)
@@ -164,16 +164,10 @@ extension View {
 }
 
 #Preview {
-    
-    @Previewable @StateObject var vm = WorkoutStackViewModel(style: .expanded)
-    
     GeometryReader { _ in
-        WorkoutDetailView(workout: StackWorkout.sample)
+        WorkoutDetailView(workout: StackWorkout.sample) {}
             .foregroundStyle(.white)
             .padding()
-            .environmentObject(vm)
     }
     .background(.black)
-    
-    
 }

@@ -9,7 +9,7 @@ import SwiftUI
 import StackShared
 
 struct ProfileView: View {
-    @EnvironmentObject var vm: WorkoutStackViewModel
+    @EnvironmentObject var router: StackRouter
     @State var profile: Profile = .init(color: Profile.colorOptions.first!, displayName: "J", uuid: nil)
     @State var editing: Bool = false
     @FocusState var textFieldFocused: Bool
@@ -20,7 +20,7 @@ struct ProfileView: View {
                 HStack {
                     Button {
                         withAnimation(.snappy(duration: 0.2)) {
-                            self.vm.page = .home
+                            router.page = .home
                         }
                     } label: {
                         HStack(spacing: 2) {
